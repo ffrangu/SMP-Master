@@ -80,6 +80,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="FastMember">
+      <HintPath>bin\Debug\netcoreapp3.1\FastMember.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Update="wwwroot\DataSet\dsPagatTabelare.xsc">
       <DependentUpon>dsPagatTabelare.xsd</DependentUpon>
     </Content>
