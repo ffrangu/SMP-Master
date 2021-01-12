@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29721.120
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SMP Master", "SMP Master\SMP Master.csproj", "{9C3771C8-B7CB-4AE0-9CCB-79EB0F007B6F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reports", "Reports\Reports.csproj", "{24FB4ED1-DA6F-4897-BDA6-C23BC85EAFFD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{9C3771C8-B7CB-4AE0-9CCB-79EB0F007B6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C3771C8-B7CB-4AE0-9CCB-79EB0F007B6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C3771C8-B7CB-4AE0-9CCB-79EB0F007B6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24FB4ED1-DA6F-4897-BDA6-C23BC85EAFFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24FB4ED1-DA6F-4897-BDA6-C23BC85EAFFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24FB4ED1-DA6F-4897-BDA6-C23BC85EAFFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24FB4ED1-DA6F-4897-BDA6-C23BC85EAFFD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
