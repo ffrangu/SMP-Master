@@ -29,14 +29,15 @@
   <ItemGroup>
     <Content Remove="wwwroot\DataSet\dsPagatTabelare.Designer.cs" />
     <Content Remove="wwwroot\DataSet\dsPagatTabelare.xsd" />
+    <Content Remove="wwwroot\Reports\PagatTabelare.rdlc" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="wwwroot\DataSet\dsPagatTabelare.Designer.cs">
-      <DependentUpon>dsPagatTabelare.xsd</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
+    <Compile Include="wwwroot\DataSet\dsPagatTabelare.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="wwwroot\Reports\PagatTabelare.rdlc" />
   </ItemGroup>
 
   <ItemGroup>
@@ -74,11 +75,7 @@
     <None Include="wwwroot\assets\js\pages\features\dropzone-5.7.0\index.js" />
     <None Include="wwwroot\assets\js\pages\features\dropzone-5.7.0\LICENSE" />
     <None Include="wwwroot\assets\js\pages\features\dropzone-5.7.0\README.md" />
-    <None Include="wwwroot\DataSet\dsPagatTabelare.xsd">
-      <SubType>Designer</SubType>
-      <LastGenOutput>dsPagatTabelare.Designer.cs</LastGenOutput>
-      <Generator>MSDataSetGenerator</Generator>
-    </None>
+    <None Include="wwwroot\DataSet\dsPagatTabelare.xsd" />
     <None Include="wwwroot\Reports\PagatTabelare.rdlc" />
   </ItemGroup>
 
@@ -88,9 +85,6 @@
     </Content>
     <Content Update="wwwroot\DataSet\dsPagatTabelare.xss">
       <DependentUpon>dsPagatTabelare.xsd</DependentUpon>
-    </Content>
-    <Content Update="wwwroot\Reports\PagatTabelare.rdlc">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 

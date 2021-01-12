@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace SMP.wwwroot.DataSet {
+namespace Reports.DataSet {
     
     
     /// <summary>
