@@ -3,23 +3,29 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using SMP_Master.Models;
+using SMP.Data;
+using SMP.Models;
+using SMP.Models.Home;
 
-namespace SMP_Master.Controllers
+namespace SMP.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IHomeRepository homeRepository;
+        public HomeController(IHomeRepository _homeRepository, RoleManager<IdentityRole> _roleManager, UserManager<ApplicationUser> _userManager) : base(_roleManager, _userManager)
         {
-            _logger = logger;
+            homeRepository = _homeRepository;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> IndexAsync()
         {
+            ViewBag.KompaniaId = user.KompaniaId;
+            ViewBag.UserId = user.UserId;
+
             return View();
         }
 

@@ -1,0 +1,135 @@
+﻿@model RaportViewModel
+@{
+    ViewData["Title"] = "Shfleto raportet";
+
+}
+
+<div class="card card-custom gutter-b">
+    <div class="card-header flex-wrap py-3">
+        <div class="card-title">
+            <h3 class="card-label">
+                Zgjedh raportin
+            </h3>
+        </div>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <label class="required">Raporti:</label>
+                        <select asp-for="RaportiId" asp-items="ViewBag.RaportiId" class="form-control init-select2">
+                            <option value="">Zgjedh</option>
+                        </select>
+                        <span asp-validation-for="RaportiId" class="text-danger"></span>
+                        <span class="form-text text-muted">Zgjedhni raportin për gjenerim</span>
+                    </div>
+                    <div class="col-md-4">
+                        <label>Kompania:</label>
+                        <select asp-for="KompaniaId" asp-items="ViewBag.KompaniaId" class="form-control init-select2">
+                            <option value="">Zgjedh</option>
+                        </select>
+                        <span asp-validation-for="KompaniaId" class="text-danger"></span>
+                        <span class="form-text text-muted">Zgjedhni kompaninë</span>
+                    </div>
+                    <div class="col-md-4">
+                        <label>Punëtori:</label>
+                        <select asp-for="PunetoriId" asp-items="ViewBag.PunetoriId" class="form-control init-select2">
+                            <option value="">Zgjedh</option>
+                        </select>
+                        <span asp-validation-for="PunetoriId" class="text-danger"></span>
+                        <span class="form-text text-muted">Zgjedhni punëtorin</span>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-md-4">
+                        <label>Grada:</label>
+                        <select asp-for="GradaId" asp-items="ViewBag.GradaId" class="form-control init-select2">
+                            <option value="">Zgjedh</option>
+                        </select>
+                        <span asp-validation-for="GradaId" class="text-danger"></span>
+                        <span class="form-text text-muted">Zgjedhni gradën</span>
+                    </div>
+                    <div class="col-md-4">
+                        <label>Banka:</label>
+                        <select asp-for="BankaId" asp-items="ViewBag.BankaId" class="form-control init-select2">
+                            <option value="">Zgjedh</option>
+                        </select>
+                        <span asp-validation-for="BankaId" class="text-danger"></span>
+                        <span class="form-text text-muted">Zgjedhni bankën</span>
+                    </div>
+                    <div class="col-md-4 mt-7">
+                        <button type="button" onclick="shtyp()" class="btn btn-success mr-2 btn-block">Kërko</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="load-result">
+
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script type="text/javascript">
+        var shtyp = function () {
+            var RaportiId = $("#RaportiId").val();
+            var KompaniaId = $("#KompaniaId").val();
+            var PunetoriId = $("#PunetoriId").val();
+            var GradaId = $("#GradaId").val();
+            var BankaId = $("#BankaId").val();
+
+            var obj = { RaportiId: RaportiId, KompaniaId: KompaniaId, PunetoriId: PunetoriId, GradaId: GradaId, BankaId: BankaId };
+
+            if (RaportiId == null || RaportiId == "" || RaportiId == "undefined") {
+                swal("Vëmendje", "Ju lutem zgjedhni raportin të cilin dëshironi të shfaqni", "warning");
+
+                return;
+            }
+
+            showLoading();
+
+            $.ajax({
+                url: "@Url.Action("GenerateReport", "Raport")",
+                cache: false,
+                type: "POST",
+                dataType: "html",
+                data: obj,
+                success: function (rs) {
+                    hideLoading();
+                    $("#load-result").html(rs);
+                },
+                error: function (jqXHR, error, errorThrown) {
+                    if (jqXHR.status && jqXHR.status == 400) {
+                        console.log(jqXHR.responseText);
+                    } else {
+                        hideLoading();
+                        console.log("Something went wrong");
+                    }
+                }
+            });
+        }
+
+
+        function showLoading() {
+            $('#modalLoading').modal({
+                backdrop: 'static',
+                keyboard: false
+            });
+            $("#modalLoading").modal('show');
+        }
+
+        //per me hjek loading barrin
+        function hideLoading() {
+            setTimeout(
+                function () {
+                    $("#modalLoading").modal('hide');
+                }, 1000);
+        }
+
+    </script>
+}

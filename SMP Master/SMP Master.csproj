@@ -1,8 +1,97 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>SMP_Master</RootNamespace>
+    <UserSecretsId>aspnet-SMP-9F74AB7C-3E08-497B-B25C-4E1A97BDB79E</UserSecretsId>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20201226162201_aspnetuserstable.cs" />
+    <Compile Remove="Migrations\20201226162201_aspnetuserstable.Designer.cs" />
+    <Compile Remove="Migrations\20201226162613_aspnettables.cs" />
+    <Compile Remove="Migrations\20201226162613_aspnettables.Designer.cs" />
+    <Compile Remove="Migrations\20210104152520_DepartamentiKeyField.cs" />
+    <Compile Remove="Migrations\20210104152520_DepartamentiKeyField.Designer.cs" />
+    <Compile Remove="Migrations\20210105184438_PagaPershkrimiField.cs" />
+    <Compile Remove="Migrations\20210105184438_PagaPershkrimiField.Designer.cs" />
+    <Compile Remove="Migrations\20210107092146_kontratapunetoriidentity.cs" />
+    <Compile Remove="Migrations\20210107092146_kontratapunetoriidentity.Designer.cs" />
+    <Compile Remove="Migrations\20210107093755_DepartamentiIdentity.cs" />
+    <Compile Remove="Migrations\20210107093755_DepartamentiIdentity.Designer.cs" />
+    <Compile Remove="Migrations\20210107094028_departamentidentity.cs" />
+    <Compile Remove="Migrations\20210107094028_departamentidentity.Designer.cs" />
+    <Compile Remove="Migrations\20210107094817_DepartamentiIdIdentity.cs" />
+    <Compile Remove="Migrations\20210107094817_DepartamentiIdIdentity.Designer.cs" />
+    <Compile Remove="Migrations\20210110115339_BonusetNetoField.cs" />
+    <Compile Remove="Migrations\20210110115339_BonusetNetoField.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\DataSet\dsPagatTabelare.Designer.cs" />
+    <Content Remove="wwwroot\DataSet\dsPagatTabelare.xsd" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="wwwroot\DataSet\dsPagatTabelare.Designer.cs">
+      <DependentUpon>dsPagatTabelare.xsd</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AspNetCore.Reporting" Version="2.1.0" />
+    <PackageReference Include="EFCore.BulkExtensions" Version="3.2.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+    <PackageReference Include="System.CodeDom" Version="5.0.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\Migrations\" />
+    <Folder Include="wwwroot\images\" />
+    <Folder Include="wwwroot\contracts\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\assets\js\pages\features\dropzone-5.7.0\.gitignore" />
+    <None Include="wwwroot\assets\js\pages\features\dropzone-5.7.0\.tagconfig" />
+    <None Include="wwwroot\assets\js\pages\features\dropzone-5.7.0\CONTRIBUTING.md" />
+    <None Include="wwwroot\assets\js\pages\features\dropzone-5.7.0\dist\dropzone-amd-module.js" />
+    <None Include="wwwroot\assets\js\pages\features\dropzone-5.7.0\dist\dropzone5.7.js" />
+    <None Include="wwwroot\assets\js\pages\features\dropzone-5.7.0\dist\dropzone5.7.js.map" />
+    <None Include="wwwroot\assets\js\pages\features\dropzone-5.7.0\dist\min\dropzone-amd-module.min.js" />
+    <None Include="wwwroot\assets\js\pages\features\dropzone-5.7.0\dist\min\dropzone.min.js" />
+    <None Include="wwwroot\assets\js\pages\features\dropzone-5.7.0\index.js" />
+    <None Include="wwwroot\assets\js\pages\features\dropzone-5.7.0\LICENSE" />
+    <None Include="wwwroot\assets\js\pages\features\dropzone-5.7.0\README.md" />
+    <None Include="wwwroot\DataSet\dsPagatTabelare.xsd">
+      <SubType>Designer</SubType>
+      <LastGenOutput>dsPagatTabelare.Designer.cs</LastGenOutput>
+      <Generator>MSDataSetGenerator</Generator>
+    </None>
+    <None Include="wwwroot\Reports\PagatTabelare.rdlc" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\DataSet\dsPagatTabelare.xsc">
+      <DependentUpon>dsPagatTabelare.xsd</DependentUpon>
+    </Content>
+    <Content Update="wwwroot\DataSet\dsPagatTabelare.xss">
+      <DependentUpon>dsPagatTabelare.xsd</DependentUpon>
+    </Content>
+    <Content Update="wwwroot\Reports\PagatTabelare.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 
 </Project>

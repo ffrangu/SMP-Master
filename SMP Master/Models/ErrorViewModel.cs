@@ -1,6 +1,6 @@
 using System;
 
-namespace SMP_Master.Models
+namespace SMP.Models
 {
     public class ErrorViewModel
     {
