@@ -14,8 +14,11 @@ using SMP.Models.Raport;
 using SMP.ViewModels.Raport;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using FastMember;
+using SMP.ViewModels.Paga;
 
 namespace SMP.Controllers
 {
@@ -86,10 +89,26 @@ namespace SMP.Controllers
             return null;
         }
 
-        public async Task<ActionResult> Print(int raportid)
+        public ActionResult Print(int raportid)
         {
-             
-            return null;
+            var lista = Models.SessionExtensions.Get<List<AllPagat>>(session, "PagatTabelare");
+            DataTable dt = new DataTable();
+            DataTable dt_items = new DataTable();
+
+            using (var reader = ObjectReader.Create(lista, null))
+            {
+                dt.Load(reader);
+            }
+
+            List<DataTable> dataSets = new List<DataTable>();
+            dataSets.Add(dt);
+            dataSets.Add(dt_items);
+
+            var reportPath = $"{ webHostEnvironment.WebRootPath }\\Reports\\PagatTabelare.rdlc";
+            var reportGenerator = new ReportGenerator();
+
+            var bytes = reportGenerator.GenerateReport(ReportGenerator.ReportType.PagaTabelare, reportPath, dataSets);
+            return File(bytes, "application/pdf");
         }
 
         // GET: RaportController/Details/5

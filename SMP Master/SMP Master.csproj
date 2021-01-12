@@ -29,7 +29,6 @@
   <ItemGroup>
     <Content Remove="wwwroot\DataSet\dsPagatTabelare.Designer.cs" />
     <Content Remove="wwwroot\DataSet\dsPagatTabelare.xsd" />
-    <Content Remove="wwwroot\Reports\PagatTabelare.rdlc" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,12 +36,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="wwwroot\Reports\PagatTabelare.rdlc" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="AspNetCore.Reporting" Version="2.1.0" />
     <PackageReference Include="EFCore.BulkExtensions" Version="3.2.7" />
+    <PackageReference Include="FastMember" Version="1.5.0" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.10" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.10" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.10" />
@@ -76,13 +72,6 @@
     <None Include="wwwroot\assets\js\pages\features\dropzone-5.7.0\LICENSE" />
     <None Include="wwwroot\assets\js\pages\features\dropzone-5.7.0\README.md" />
     <None Include="wwwroot\DataSet\dsPagatTabelare.xsd" />
-    <None Include="wwwroot\Reports\PagatTabelare.rdlc" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="FastMember">
-      <HintPath>bin\Debug\netcoreapp3.1\FastMember.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
   <ItemGroup>
@@ -91,6 +80,9 @@
     </Content>
     <Content Update="wwwroot\DataSet\dsPagatTabelare.xss">
       <DependentUpon>dsPagatTabelare.xsd</DependentUpon>
+    </Content>
+    <Content Update="wwwroot\Reports\PagatTabelare.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 

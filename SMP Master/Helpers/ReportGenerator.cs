@@ -32,7 +32,7 @@ namespace SMP.Helpers
             switch (type)
             {
                 case ReportType.PagaTabelare:
-                    reportViewer.AddDataSource("dataset", dataTable[0]);
+                    reportViewer.AddDataSource("dsPagatTabelare", dataTable[0]);
                     break;
 
                 default:

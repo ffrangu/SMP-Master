@@ -32,7 +32,7 @@ namespace SMP.Models.Raport
             }
             else
             {
-                if(KompaniaId.Value != 0)
+                if(KompaniaId.HasValue)
                 {
                     pagat = await context.Paga.Where(q => q.KompaniaId == KompaniaId)
                                               .Include(q => q.Punetori)
@@ -47,6 +47,7 @@ namespace SMP.Models.Raport
                           .Include(q => q.Punetori)
                           .Include(q => q.Punetori.Pozita)
                           .Include(q => q.Grada)
+                          .Include(q => q.Punetori.Banka)
                           .Include(q => q.Kompania).OrderByDescending(q => q.Id).ToListAsync();
                 }
             }

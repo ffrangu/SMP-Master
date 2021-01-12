@@ -32,6 +32,8 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using SMP.Models.Home;
 using SMP.Models.Bonuset;
 using SMP.Models.Raport;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
 
 namespace SMP
 {
@@ -96,6 +98,7 @@ namespace SMP
 
             services.TryAddSingleton<IActionContextAccessor, ActionContextAccessor>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddLocalization();
 
             services.ConfigureApplicationCookie(options =>
             {
@@ -141,6 +144,18 @@ namespace SMP
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            var supportedCultures = new[]{
+                                    new CultureInfo("en-US")
+};
+            app.UseRequestLocalization(new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture("en-US"),
+                SupportedCultures = supportedCultures,
+                FallBackToParentCultures = false
+            });
+
+            CultureInfo.DefaultThreadCurrentCulture = CultureInfo.CreateSpecificCulture("en-US");
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -170,6 +185,8 @@ namespace SMP
             {
                 routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
             });
+
+
             //app.UseEndpoints(endpoints =>
             //{
             //    endpoints.MapControllerRoute(
