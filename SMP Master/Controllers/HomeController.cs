@@ -21,7 +21,7 @@ namespace SMP.Controllers
             homeRepository = _homeRepository;
         }
 
-        public async Task<IActionResult> IndexAsync()
+        public IActionResult Index()
         {
             ViewBag.KompaniaId = user.KompaniaId;
             ViewBag.UserId = user.UserId;
