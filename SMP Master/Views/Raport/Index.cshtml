@@ -131,5 +131,42 @@
                 }, 1000);
         }
 
+
+        $(function () {
+
+            $('#KompaniaId').change(function () {
+                fnKompaniaChange();
+
+            });
+
+        });
+
+        function fnKompaniaChange() {
+        var KompaniaId = $('#KompaniaId').val();
+
+        if (KompaniaId > 0) {
+                $.ajax({
+                    data: { KompaniaId: KompaniaId },
+                    url: '@Url.Action("LoadPunetoret", "Raport")',
+                    type: "GET",
+                    dataType: "JSON",
+                    success: function (results) {
+
+                        $("#PunetoriId").html("");
+                        $("#PunetoriId").prepend(new Option("Zgjedh punëtorin", ""));
+                        $.each(results, function (i, result) {
+                            $("#PunetoriId").append(
+                       $('<option></option>').val(result.value).html(result.text)
+                       );
+                        });
+                    }
+                });
+            }
+            else {
+            $("#PunetoriId").html("");
+            $("#PunetoriId").prepend(new Option("Zgjedh", ""));
+            }
+
+        }
     </script>
 }

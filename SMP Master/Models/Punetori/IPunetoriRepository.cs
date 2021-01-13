@@ -19,5 +19,7 @@ namespace SMP.Models.Punetori
 
         Task<Data.Punetori> GetPunetoriByUserId(string UserId);
 
+        SelectList LoadPunetoret(int? KompaniaId);
+
     }
 }

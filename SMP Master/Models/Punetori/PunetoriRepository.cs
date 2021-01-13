@@ -82,5 +82,26 @@ namespace SMP.Models.Punetori
         {
             return await context.Punetori.FirstOrDefaultAsync(q => q.UserId == UserId);
         }
+
+        public SelectList LoadPunetoret(int? KompaniaId)
+        {
+            if (KompaniaId.HasValue)
+            {
+                var punetoret = from p in context.Punetori
+                                select new
+                                {
+                                    Id = p.Id,
+                                    Emri = p.Emri + " " + p.Mbiemri
+                                };
+
+                return new SelectList(punetoret, "Id", "Emri");
+
+            }
+            else
+            {
+                var empty = new List<Data.Punetori>();
+                return new SelectList(empty, "Value", "Text");
+            }
+        }
     }
 }

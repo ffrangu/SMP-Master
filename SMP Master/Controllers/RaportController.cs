@@ -111,6 +111,25 @@ namespace SMP.Controllers
             return File(bytes, "application/pdf");
         }
 
+        public JsonResult LoadPunetoret(int? KompaniaId)
+        {
+            SelectList Punetoret = null;
+            try
+            {
+                if (KompaniaId > 0)
+                {
+                    Punetoret = punetoriRepository.LoadPunetoret(KompaniaId);
+                    ViewBag.PunetoriId = Punetoret;
+                }
+            }
+            catch (Exception ex)
+            {
+
+
+            }
+            return Json(Punetoret);
+        }
+
         // GET: RaportController/Details/5
         public ActionResult Details(int id)
         {
